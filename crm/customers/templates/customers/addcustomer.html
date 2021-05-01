@@ -1,0 +1,234 @@
+{% extends 'customers/basic.html'%} {%block content%}
+
+<div class="container">
+    <h3 class="my-3  text-center">Add new customer</h3>
+    <form class="">
+        <!-- --------------------------------------PERSONAL DETAILS SECTION --------------------------->
+        <div class="row g-3 my-3 bg-light p-3">
+            <h5>Personal Details</h5>
+            <div class="col-md-6">
+                <label for="inputName" class="form-label">Name</label>
+                <input type="text" class="form-control" placeholder="First name" aria-label="First name" />
+            </div>
+            <div class="col-md-6">
+                <label for="inputEmail4" class="form-label">Email</label>
+                <input type="email" class="form-control" id="inputEmail4" placeholder="abc@gmail.com" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="inputLastname" class="form-label">Primary Mobile No.</label>
+                <input type="tel" class="form-control" placeholder="Primary Mobile Number"
+                    aria-label="Primary Mobile Number" />
+            </div>
+            <div class="col-md-6">
+                <label for="inputLastname" class="form-label">Alternate Mobile No.</label>
+                <input type="tel" class="form-control" placeholder="Alternate Mobile Number"
+                    aria-label="Alternate Mobile Number" />
+            </div>
+
+            <div class="col-12">
+                <label for="inputAddress" class="form-label">Address</label>
+                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" />
+            </div>
+
+            <div class="col-md-6">
+                <label for="inputCity" class="form-label">City</label>
+                <input type="text" class="form-control" id="inputCity" />
+            </div>
+            <div class="col-md-4">
+                <label for="inputState" class="form-label">State</label>
+                <select id="inputState" class="form-select">
+                    <option selected>Maharastra</option>
+                    <option>Other</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label for="inputZip" class="form-label">Zip</label>
+                <input type="text" class="form-control" id="inputZip" />
+            </div>
+
+        </div>
+
+        <!-- -------------------------------------------CONNECTION DETAILS SECTION--------------------------------------------------- -->
+        <div class=" g-3 my-3 bg-light p-3">
+            <h5>Connection Details</h5>
+            <div class="col-md-2 my-4">
+                <label for="inputState" class="form-label">Connection Type</label>
+                <select id="connectiontype" class="form-select">
+                    <option disabled selected>--Select an option--</option>
+                    <option value="wireless">Wireless</option>
+                    <option value="ftth">FTTH</option>
+                </select>
+            </div>
+
+
+            <!-- --------wireless----------- -->
+            <div class="row" id="wireless-form" style="display: none">
+                <div class="col-lg-4">
+                    <label for="inputState" class="form-label">Cat 6 cable length</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="" aria-label="Fiber length"
+                            aria-describedby="basic-addon2" />
+                        <span class="input-group-text" id="basic-addon2">meters</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <label for="inputState" class="form-label">P2P Device Price</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="" aria-label="Fiber length"
+                            aria-describedby="basic-addon2" />
+                        <span class="input-group-text" id="basic-addon2">Rupees</span>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <label for="inputState" class="form-label">Router Price</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="" aria-label="Fiber length"
+                            aria-describedby="basic-addon2" />
+                        <span class="input-group-text" id="basic-addon2">Rupees</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- --------------ftth-------------- -->
+            <div class="row" id="ftth-form" style="display: none">
+                <div class="col-lg-3">
+                    <label for="inputState" class="form-label">Fiber length</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="" aria-label="Fiber length"
+                            aria-describedby="basic-addon2" />
+                        <span class="input-group-text" id="basic-addon2">meters</span>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <label for="inputState" class="form-label">Router Price</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="" aria-label="Fiber length"
+                            aria-describedby="basic-addon2" />
+                        <span class="input-group-text" id="basic-addon2">Rupees</span>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <label for="inputState" class="form-label">Closer Box</label>
+                    <select id="inputState" class="form-select">
+                        <option disabled selected>--Select size--</option>
+                        <option>Small</option>
+                        <option>Big</option>
+                    </select>
+                </div>
+                <div class="col-lg-3">
+                    <label for="inputState" class="form-label">Patch Cord</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="" aria-label="Patch Cord"
+                            aria-describedby="basic-addon2" />
+                        <span class="input-group-text" id="basic-addon2">No.s</span>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <label for="inputState" class="form-label">Installation Charges</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="" aria-label="Patch Cord"
+                            aria-describedby="basic-addon2" />
+                        <span class="input-group-text" id="basic-addon2">Rupees</span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <label for="inputName" class="form-label">ONT/ONU Info</label>
+
+                <div class="col-md-6 my-1">
+                    <input type="text" class="form-control" placeholder="Username" aria-label="First name" />
+                </div>
+                <div class="col-md-6 my-1">
+
+                    <input type="text" class="form-control" id="inputEmail4" placeholder="Password" />
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+
+        <!-- --------------------------------------------KYC details SECTION--------------------------------------------- -->
+        <div class=" row g-3 my-3 bg-light p-3">
+            <h5>KYC Details</h5>
+            <div class="col-md-6">
+                <label for="inputName" class="form-label">Photo</label>
+                <div class="input-group mb-3">
+                    <input type='file' onchange="readURL(this);" />
+                    <div class="input-group mb-3">
+                        <img id="photopreview" src="#" alt="your image" style="display: none;" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <label for="inputName" class="form-label">Documents</label>
+                <div class="input-group mb-3">
+                    <input type='file' onchange="readURL(this);" />
+                    <div class="input-group mb-3">
+                        <img id="docpreview" src="#" alt="your image" style="display: none;" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+    </form>
+</div>
+
+{%endblock%}
+
+
+{%block js%}
+<script>
+    $("#connectiontype").change(function () {
+        $("#wireless-form,#ftth-form").hide();
+        $("#wireless-form select,#ftth-form select").prop("selectedIndex", 0);
+
+        if (this.value == "ftth") {
+            $("#ftth-form").show();
+        } else if (this.value == "wireless") {
+            $("#wireless-form").show();
+        }
+    });
+
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            $('#photopreview').hide();
+            
+
+            reader.onload = function (e) {
+                $('#photopreview').show()
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+            
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    };
+</script>
+{%endblock%}

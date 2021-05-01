@@ -7,3 +7,7 @@ def home(request):
 
 def customers(request):
     return render (request, 'customers/customers.html')
+
+
+def addcustomer(request):
+    return render (request, 'customers/addcustomer.html')
