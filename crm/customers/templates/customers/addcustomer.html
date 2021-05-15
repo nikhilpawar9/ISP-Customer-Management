@@ -2,49 +2,50 @@
 
 <div class="container">
     <h3 class="my-3  text-center">Add new customer</h3>
-    <form class="">
+    <form action="" method="POST" class="">
+        {% csrf_token %}
         <!-- --------------------------------------PERSONAL DETAILS SECTION --------------------------->
         <div class="row g-3 my-3 bg-light p-3">
             <h5>Personal Details</h5>
             <div class="col-md-6">
                 <label for="inputName" class="form-label">Name</label>
-                <input type="text" class="form-control" placeholder="First name" aria-label="First name" />
+                <input type="text" class="form-control" placeholder="Name" aria-label="name" name="name" id="name" />
             </div>
             <div class="col-md-6">
-                <label for="inputEmail4" class="form-label">Email</label>
-                <input type="email" class="form-control" id="inputEmail4" placeholder="abc@gmail.com" />
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" placeholder="abc@gmail.com" name="email" />
             </div>
 
             <div class="col-md-6">
-                <label for="inputLastname" class="form-label">Primary Mobile No.</label>
+                <label for="primary-mobile" class="form-label">Primary Mobile No.</label>
                 <input type="tel" class="form-control" placeholder="Primary Mobile Number"
-                    aria-label="Primary Mobile Number" />
+                    aria-label="Primary Mobile Number" name="primarymobile"  id="primarymobile"/>
             </div>
             <div class="col-md-6">
-                <label for="inputLastname" class="form-label">Alternate Mobile No.</label>
+                <label for="alternate-mobile" class="form-label">Alternate Mobile No.</label>
                 <input type="tel" class="form-control" placeholder="Alternate Mobile Number"
-                    aria-label="Alternate Mobile Number" />
+                    aria-label="Alternate Mobile Number" name="alternatemobile" id="alternatemobile" />
             </div>
 
             <div class="col-12">
-                <label for="inputAddress" class="form-label">Address</label>
-                <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St" />
+                <label for="address" class="form-label">Address</label>
+                <input type="text" class="form-control" id="address" placeholder="1234 Main St" name="address" />
             </div>
 
             <div class="col-md-6">
-                <label for="inputCity" class="form-label">City</label>
-                <input type="text" class="form-control" id="inputCity" />
+                <label for="city" class="form-label">City</label>
+                <input type="text" class="form-control" id="city" name="city" />
             </div>
             <div class="col-md-4">
-                <label for="inputState" class="form-label">State</label>
-                <select id="inputState" class="form-select">
+                <label for="state" class="form-label">State</label>
+                <select id="state" class="form-select" name="state">
                     <option selected>Maharastra</option>
                     <option>Other</option>
                 </select>
             </div>
             <div class="col-md-2">
-                <label for="inputZip" class="form-label">Zip</label>
-                <input type="text" class="form-control" id="inputZip" />
+                <label for="zip" class="form-label">Zip</label>
+                <input type="text" class="form-control" id="zipcode" name="zipcode" />
             </div>
 
         </div>
@@ -53,9 +54,9 @@
         <div class=" g-3 my-3 bg-light p-3">
             <h5>Connection Details</h5>
             <div class="col-md-2 my-4">
-                <label for="inputState" class="form-label">Connection Type</label>
-                <select id="connectiontype" class="form-select">
-                    <option disabled selected>--Select an option--</option>
+                <label for="connectiontype" class="form-label">Connection Type</label>
+                <select id="connectiontype" class="form-select" name="connectiontype">
+                    <!-- <option disabled selected>--Select an option--</option> -->
                     <option value="wireless">Wireless</option>
                     <option value="ftth">FTTH</option>
                 </select>
@@ -65,28 +66,28 @@
             <!-- --------wireless----------- -->
             <div class="row" id="wireless-form" style="display: none">
                 <div class="col-lg-4">
-                    <label for="inputState" class="form-label">Cat 6 cable length</label>
+                    <label for="catcable" class="form-label">Cat 6 cable length</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="" aria-label="Fiber length"
-                            aria-describedby="basic-addon2" />
-                        <span class="input-group-text" id="basic-addon2">meters</span>
+                        <input type="text" class="form-control"  aria-label="Fiber length"
+                            aria-describedby="catcablelength"  name="catcablelength"/>
+                        <span class="input-group-text" id="catcablelength">Meters</span>
                     </div>
                 </div>
 
                 <div class="col-lg-4">
-                    <label for="inputState" class="form-label">P2P Device Price</label>
+                    <label for="p2pdevice" class="form-label">P2P Device Price</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="" aria-label="Fiber length"
-                            aria-describedby="basic-addon2" />
-                        <span class="input-group-text" id="basic-addon2">Rupees</span>
+                        <input type="text" class="form-control" aria-label="p2pdevice"
+                            aria-describedby="p2pdevice" name="p2pdevice" />
+                        <span class="input-group-text" id="p2pdevice">Rupees</span>
                     </div>
                 </div>
                 <div class="col-lg-4">
-                    <label for="inputState" class="form-label">Router Price</label>
+                    <label for="routerprice" class="form-label">Wireless Router Price</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="" aria-label="Fiber length"
-                            aria-describedby="basic-addon2" />
-                        <span class="input-group-text" id="basic-addon2">Rupees</span>
+                        <input type="text" class="form-control" placeholder="" aria-label="routerprice"
+                            aria-describedby="wirerouterprice" name="wirelessrouterprice"  id="wirelessrouterprice"/>
+                        <span class="input-group-text">Rupees</span>
                     </div>
                 </div>
             </div>
@@ -95,36 +96,36 @@
             <!-- --------------ftth-------------- -->
             <div class="row" id="ftth-form" style="display: none">
                 <div class="col-lg-3">
-                    <label for="inputState" class="form-label">Fiber length</label>
+                    <label for="fiberlength" class="form-label">Fiber length</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="" aria-label="Fiber length"
-                            aria-describedby="basic-addon2" />
-                        <span class="input-group-text" id="basic-addon2">meters</span>
+                        <input type="text" class="form-control" placeholder="" aria-label="fiberlength"
+                            aria-describedby="fiberlength" name="ftthfiberlength"/>
+                        <span class="input-group-text" id="ftthfiberlength">Meters</span>
                     </div>
                 </div>
 
                 <div class="col-lg-3">
-                    <label for="inputState" class="form-label">Router Price</label>
+                    <label for="ftthrouterprice" class="form-label">Router Price</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="" aria-label="Fiber length"
-                            aria-describedby="basic-addon2" />
-                        <span class="input-group-text" id="basic-addon2">Rupees</span>
+                        <input type="text" class="form-control" placeholder="" aria-label="ftthrouterprice"
+                            aria-describedby="ftthrouterprice" name="ftthrouterprice"/>
+                        <span class="input-group-text" id="ftthrouterprice">Rupees</span>
                     </div>
                 </div>
                 <div class="col-lg-3">
-                    <label for="inputState" class="form-label">Closer Box</label>
-                    <select id="inputState" class="form-select">
-                        <option disabled selected>--Select size--</option>
-                        <option>Small</option>
+                    <label for="closerbox" class="form-label">Closer Box</label>
+                    <select id="closerbox" class="form-select" name="closerbox">
+                        <!-- <option disabled selected>--Select size--</option> -->
+                        <option>Mini</option>
                         <option>Big</option>
                     </select>
                 </div>
                 <div class="col-lg-3">
-                    <label for="inputState" class="form-label">Patch Cord</label>
+                    <label for="patchcord" class="form-label">Patch Cord</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="" aria-label="Patch Cord"
-                            aria-describedby="basic-addon2" />
-                        <span class="input-group-text" id="basic-addon2">No.s</span>
+                        <input type="text" class="form-control"  aria-label="Patch Cord"
+                            aria-describedby="patchcord" name="patchcord" />
+                        <span class="input-group-text" id="patchcord">No.s</span>
                     </div>
                 </div>
 
@@ -133,25 +134,25 @@
 
             <div class="row">
                 <div class="col-lg-4">
-                    <label for="inputState" class="form-label">Installation Charges</label>
+                    <label for="installationcharges" class="form-label">Installation Charges</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="" aria-label="Patch Cord"
-                            aria-describedby="basic-addon2" />
-                        <span class="input-group-text" id="basic-addon2">Rupees</span>
+                        <input type="number" class="form-control"  aria-label="installationcharges"
+                            aria-describedby="installationcharges" name="installationcharges" />
+                        <span class="input-group-text" id="installationcharges">Rupees</span>
                     </div>
                 </div>
             </div>
 
 
             <div class="row">
-                <label for="inputName" class="form-label">ONT/ONU Info</label>
+                <label for="ont" class="form-label">ONT/ONU Info</label>
 
                 <div class="col-md-6 my-1">
-                    <input type="text" class="form-control" placeholder="Username" aria-label="First name" />
+                    <input type="text" class="form-control" placeholder="Username" name="ontusername"  id="ontusername" />
                 </div>
                 <div class="col-md-6 my-1">
 
-                    <input type="text" class="form-control" id="inputEmail4" placeholder="Password" />
+                    <input type="text" class="form-control" id="ontpassword" placeholder="Password" name="ontpassword" />
                 </div>
             </div>
 
@@ -165,9 +166,9 @@
         <div class=" row g-3 my-3 bg-light p-3">
             <h5>KYC Details</h5>
             <div class="col-md-6">
-                <label for="inputName" class="form-label">Photo</label>
+                <label for="photo" class="form-label">Photo</label>
                 <div class="input-group mb-3">
-                    <input type='file' onchange="readURL(this);" />
+                    <input type='file' onchange="previewPhoto(this);" name="customerphoto" id="customerphoto" />
                     <div class="input-group mb-3">
                         <img id="photopreview" src="#" alt="your image" style="display: none;" />
                     </div>
@@ -177,22 +178,16 @@
             <div class="col-md-6">
                 <label for="inputName" class="form-label">Documents</label>
                 <div class="input-group mb-3">
-                    <input type='file' onchange="readURL(this);" />
+                    <input type='file' onchange="previewDoc(this);" name="kycdocument" id="kycdocument"/>
                     <div class="input-group mb-3">
                         <img id="docpreview" src="#" alt="your image" style="display: none;" />
                     </div>
                 </div>
             </div>
 
+            <button type="submit" class="btn btn-primary col-md-4 text-center">Submit</button>
+
         </div>
-
-
-
-
-
-
-
-
     </form>
 </div>
 
@@ -213,7 +208,7 @@
     });
 
 
-    function readURL(input) {
+    function previewPhoto(input) {
         if (input.files && input.files[0]) {
             var reader = new FileReader();
             $('#photopreview').hide();
@@ -222,7 +217,7 @@
             reader.onload = function (e) {
                 $('#photopreview').show()
                     .attr('src', e.target.result)
-                    .width(150)
+                    .width(300)
                     .height(200);
             };
             
@@ -230,5 +225,27 @@
             reader.readAsDataURL(input.files[0]);
         }
     };
+    function previewDoc(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            $('#docpreview').hide();
+            
+
+            reader.onload = function (e) {
+                $('#docpreview').show()
+                    .attr('src', e.target.result)
+                    .width(400)
+                    .height(250);
+            };
+            
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    };
+
+
+
+
+
 </script>
 {%endblock%}
