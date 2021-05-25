@@ -5,8 +5,13 @@ from customers.models import Customer
 def home(request):
     return render (request, 'customers/dashboard.html')
 
+
 def customers(request):
-    return render (request, 'customers/customers.html')
+    cust=Customer.objects.all()
+
+    return render (request, 'customers/customers.html', {'cust':cust})
+
+
 
 
 def addcustomer(request):
@@ -50,4 +55,8 @@ def addcustomer(request):
     return render (request, 'customers/addcustomer.html')
 
 
+def login(request):
+    return render (request, 'customers/login.html')
 
+def logout(request):
+    return render (request, 'customers/logout.html')
