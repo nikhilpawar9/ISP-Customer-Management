@@ -1,12 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from customers.models import Customer
+from django.contrib.auth.forms import UserCreationForm
 
 def home(request):
     return render (request, 'customers/dashboard.html')
 
+
 def customers(request):
-    return render (request, 'customers/customers.html')
+    cust=Customer.objects.all()
+
+    return render (request, 'customers/customers.html', {'cust':cust})
+
+
 
 
 def addcustomer(request):
@@ -50,4 +56,17 @@ def addcustomer(request):
     return render (request, 'customers/addcustomer.html')
 
 
+def login(request):
+    return render (request, 'customers/login.html')
 
+def logout(request):
+    return render (request, 'customers/logout.html')
+
+def signup(request):
+    if request.method == "POST":       
+        fm=UserCreationForm(request.POST)
+        if fm.is_valid():
+            fm.save()
+    else:
+        fm=UserCreationForm()
+    return render (request, 'customers/signup.html', {'form':fm})

@@ -33,3 +33,4 @@ class Customer(models.Model):
     kYC_document= models.ImageField(upload_to="customers/images",default="", blank=True)
     def __str__(self):
         return self.name
+
