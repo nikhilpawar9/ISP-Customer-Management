@@ -62,6 +62,7 @@ def login(request):
 def logout(request):
     return render (request, 'customers/logout.html')
 
+
 def signup(request):
     if request.method == "POST":       
         fm=UserCreationForm(request.POST)
