@@ -4,6 +4,7 @@ from customers.models import Customer
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
 
 def home(request):
     return render (request, 'customers/dashboard.html')
@@ -58,19 +59,11 @@ def addcustomer(request):
    
     return render (request, 'customers/addcustomer.html')
 
-    # Signup function
-def sign_up(request):
-    if request.method == "POST":
-        fm = UserCreationForm(request.POST)
-        if fm.is_valid():
-            fm.save()
-    
-    else:
-        fm = UserCreationForm()
-    return render(request, 'customers/sign_up.html' , {'form' : fm})
+  
 
 
-# login function
+
+
 def signin(request):
     if request.method == "POST":
         fm = AuthenticationForm(request=request , data=request.POST)
@@ -80,7 +73,7 @@ def signin(request):
             user = authenticate(username=uname, password=upass)
             if user is not None:
                 login(request, user)
-                return HttpResponseRedirect('/dashboard')
+                return HttpResponseRedirect('/')
     else:
         fm = AuthenticationForm()
 
@@ -88,3 +81,15 @@ def signin(request):
 
 def user_profile(request):
     return render(request, 'customers/profile.html')
+def logout(request):
+    return render (request, 'customers/logout.html')
+
+
+def signup(request):
+    if request.method == "POST":       
+        fm=UserCreationForm(request.POST)
+        if fm.is_valid():
+            fm.save()
+    else:
+        fm=UserCreationForm()
+    return render (request, 'customers/signup.html', {'form':fm})

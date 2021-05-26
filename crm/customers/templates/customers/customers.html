@@ -30,7 +30,7 @@
         <th>Zip Code</th>
         <th>Connection Type</th>
         <th>Inst. Charges</th>
-        <th>Cat 6 Cable length</th>
+        <!-- <th>Cat 6 Cable length</th>
         <th>P2p device price</th>
         <th>City</th>
         <th>State</th>
@@ -42,8 +42,8 @@
         <th>Username</th>
         <th>Password</th>
         <th>Customer photo</th>
-        <th>KYC document</th> 
-     </tr>
+        <th>KYC document</th> -->
+    </tr>
     {% for cs in cust %}
     <tr>
         
@@ -55,8 +55,8 @@
     <td>{{cs.address}}</td>
     <td>{{cs.zipcode}}</td>
     <td> {{cs.connection_type}}</td>
-    <td>{{cs.installation_charges}}</td> 
-     <td>{{cs.cat_6_cable_length}}</td>
+    <td>{{cs.installation_charges}}</td>
+    <!-- <td>{{cs.cat_6_cable_length}}</td>
     <td>{{cs.p2p_device_price}}</td>
     <td>{{cs.city}}</td>
     <td>{{cs.state}}</td>
@@ -68,22 +68,22 @@
     <td>{{cs.username}}</td>
     <td>{{cs.password}}</td>
     <td>{{cs.customer_photo}}</td>
-    <td>{{cs.kYC_document}}</td> 
-   </element>
-   </tr> 
+    <td>{{cs.kYC_document}}</td> -->
+  </element>
+   </tr>
 
 
 
 
 
 
-    {% endfor %}
+   {% endfor %}
     
-  </table> 
+  </table>
 
 
 
-   <{% else %}
+   {% else %}
    <h2>No Data</h2>
    {% endif %}
 
@@ -97,10 +97,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
 
-    
+  
+      
 {%endblock%}
   </body>
 </html>
-
-
-
