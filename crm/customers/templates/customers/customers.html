@@ -1,26 +1,12 @@
 {% extends 'customers/basic.html'%}
-
+{% block title%}Customers {% endblock %}
 {%block content%}
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
-  </head>
-  <body>
     <h1>Customer Page</h1>
    
    
-   {% if cust %}
-   
-   <table class="table table-bordered" border="1">
-   
+   {% if cust %}   
+   <table class="table table-bordered" border="1">  
     <tr>
         <th>Name</th> 
         <th>Pri. Mobile</th>
@@ -44,10 +30,11 @@
         <th>Customer photo</th>
         <th>KYC document</th> -->
     </tr>
+    
+    
+
     {% for cs in cust %}
     <tr>
-        
-    
     <td>{{cs.name}}</td>
     <td>{{cs.primary_mobile}}</td>
     <td>{{cs.alternate_mobile}}</td>
@@ -71,21 +58,12 @@
     <td>{{cs.kYC_document}}</td> -->
   </element>
    </tr>
-
-
-
-
-
-
-   {% endfor %}
-    
+  {% endfor %}  
   </table>
 
-
-
-   {% else %}
+  {% else %}
    <h2>No Data</h2>
-   {% endif %}
+  {% endif %}
 
    
 
@@ -100,5 +78,5 @@
   
       
 {%endblock%}
-  </body>
-</html>
+
+
