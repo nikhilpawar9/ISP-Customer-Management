@@ -29,8 +29,8 @@ class Customer(models.Model):
     username= models.CharField(max_length=10, default="username")
     password= models.CharField(max_length=10, default="password")
     
-    customer_photo= models.ImageField(upload_to="customers/images",default="", blank=True)
-    kYC_document= models.ImageField(upload_to="customers/images",default="", blank=True)
+    customer_photo= models.ImageField(upload_to="images", blank=True)
+    kYC_document= models.ImageField(upload_to="images", blank=True)
     def __str__(self):
         return self.name
 

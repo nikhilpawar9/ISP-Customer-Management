@@ -2,10 +2,10 @@
 {% block title%}Customers {% endblock %}
 {%block content%}
 
-    <h1>Customer Page</h1>
    
    
-   {% if cust %}   
+   {% if cust %}  
+   <div class="container my-5"> 
    <table class="table table-bordered" border="1">  
     <tr>
         <th>Name</th> 
@@ -16,6 +16,7 @@
         <th>Zip Code</th>
         <th>Connection Type</th>
         <th>Inst. Charges</th>
+        <th>Action</th>
         <!-- <th>Cat 6 Cable length</th>
         <th>P2p device price</th>
         <th>City</th>
@@ -43,19 +44,9 @@
     <td>{{cs.zipcode}}</td>
     <td> {{cs.connection_type}}</td>
     <td>{{cs.installation_charges}}</td>
-    <!-- <td>{{cs.cat_6_cable_length}}</td>
-    <td>{{cs.p2p_device_price}}</td>
-    <td>{{cs.city}}</td>
-    <td>{{cs.state}}</td>
-    <td>{{cs.wireless_router_price}}</td>
-    <td>{{cs.ftth_fiber_length}}</td>
-    <td>{{cs.closer_box}}</td>
-    <td>{{cs.patch_cord}}</td>
-    <td>{{cs.ftth_router_price}}</td>
-    <td>{{cs.username}}</td>
-    <td>{{cs.password}}</td>
-    <td>{{cs.customer_photo}}</td>
-    <td>{{cs.kYC_document}}</td> -->
+    <td ><a href="/customers/{{cs.name}}"><button id="cus{{cs.name}}" class="btn btn-primary cart">QuickView</button></a></td>
+    
+    
   </element>
    </tr>
   {% endfor %}  
@@ -65,18 +56,11 @@
    <h2>No Data</h2>
   {% endif %}
 
-   
-
-
+</div>
     
-
-
-   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-
-
-  
-      
 {%endblock%}
 
+{%block js%}
 
+{%endblock%}

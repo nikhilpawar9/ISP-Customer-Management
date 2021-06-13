@@ -16,7 +16,11 @@ def customers(request):
     return render (request, 'customers/customers.html', {'cust':cust})
 
 
-
+def customerView(request,customername):
+     # fetch product using id
+     cs = Customer.objects.filter(name=customername)
+     print(cs)
+     return render(request,'customers/viewcustomer.html',{'cs':cs[0]})
 
 def addcustomer(request):
     if (request.method== 'POST'  ) :
