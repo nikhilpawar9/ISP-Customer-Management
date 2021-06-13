@@ -1,19 +1,44 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from customers.models import Customer
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
-
+from .forms import CustomerSearchForm
 def home(request):
     return render (request, 'customers/dashboard.html')
 
 
+# def customers(request):
+#     cust=Customer.objects.all()
+
+#     return render (request, 'customers/customers.html', {'cust':cust})
+
 def customers(request):
     cust=Customer.objects.all()
 
-    return render (request, 'customers/customers.html', {'cust':cust})
+    form = CustomerSearchForm(request.POST or None)
+    context = {
+        "form" : form,
+        "cust":cust,
+    }
+    if request.method == 'POST':
+
+        cust=Customer.objects.all().filter(name = form['name'].value(),primary_mobile = form['primary_mobile'].value())
+        context = {
+            "cust" : cust,
+            "form" : form,
+            
+        }
+        if form.is_valid():
+            form.save()
+            return redirect('addcustomer.html')
+        else :
+            return render(request, 'customers/customers.html', 
+                          {'form': form} , {'cust' : cust})
+    else:
+        return render (request, 'customers/customers.html', context)
 
 
 def customerView(request,customername):
