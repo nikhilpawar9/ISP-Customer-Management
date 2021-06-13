@@ -6,46 +6,33 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomerSearchForm
+
+
 def home(request):
     return render (request, 'customers/dashboard.html')
 
 
-# def customers(request):
-#     cust=Customer.objects.all()
-
-#     return render (request, 'customers/customers.html', {'cust':cust})
-
-def customers(request):
-    cust=Customer.objects.all()
-
-    form = CustomerSearchForm(request.POST or None)
+def customers_list(request):
+    customer_list=Customer.objects.all()
+    form = CustomerSearchForm(request.POST )
     context = {
-        "form" : form,
-        "cust":cust,
+        "form": form,
+        "customer_list": customer_list,
     }
+    
     if request.method == 'POST':
-
-        cust=Customer.objects.all().filter(name = form['name'].value(),primary_mobile = form['primary_mobile'].value())
+        customer_list=Customer.objects.filter(name = form['name'].value(),primary_mobile = form['primary_mobile'].value())   
         context = {
-            "cust" : cust,
-            "form" : form,
-            
-        }
-        if form.is_valid():
-            form.save()
-            return redirect('addcustomer.html')
-        else :
-            return render(request, 'customers/customers.html', 
-                          {'form': form} , {'cust' : cust})
-    else:
-        return render (request, 'customers/customers.html', context)
+        "form": form,
+        "customer_list": customer_list,
+    }
+    return render (request, 'customers/customers_list.html',context)
 
 
-def customerView(request,customername):
-     # fetch product using id
-     cs = Customer.objects.filter(name=customername)
-     print(cs)
-     return render(request,'customers/viewcustomer.html',{'cs':cs[0]})
+
+def customerQuickView(request,customername):
+    cs = Customer.objects.filter(name=customername)
+    return render(request,'customers/customer_quickview.html',{'cs':cs[0]})
 
 def addcustomer(request):
     if (request.method== 'POST'  ) :

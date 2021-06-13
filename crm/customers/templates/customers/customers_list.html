@@ -2,13 +2,13 @@
 {% block title%}Customers {% endblock %}
 {%block content%}
 
-  <form method="post">
+<form method="post">
 {% csrf_token %}
 {{form}}
 <input class="btn btn-primary" type="submit" value="Search" />
 </form>
    
-   {% if cust %}  
+   {% if customer_list %}  
    <div class="container my-5"> 
    <table class="table table-bordered" border="1">  
     <tr>
@@ -21,24 +21,9 @@
         <th>Connection Type</th>
         <th>Inst. Charges</th>
         <th>Action</th>
-        <!-- <th>Cat 6 Cable length</th>
-        <th>P2p device price</th>
-        <th>City</th>
-        <th>State</th>
-        <th>Wireless router price</th>
-        <th>Fith fiber length</th>
-        <th>Closer Box</th>
-        <th>Patch cord</th>
-        <th>Ftth router price</th>        
-        <th>Username</th>
-        <th>Password</th>
-        <th>Customer photo</th>
-        <th>KYC document</th> -->
     </tr>
     
-    
-
-    {% for cs in cust %}
+    {% for cs in customer_list %}
     <tr>
     <td>{{cs.name}}</td>
     <td>{{cs.primary_mobile}}</td>
@@ -48,9 +33,7 @@
     <td>{{cs.zipcode}}</td>
     <td> {{cs.connection_type}}</td>
     <td>{{cs.installation_charges}}</td>
-    <td ><a href="/customers/{{cs.name}}"><button id="cus{{cs.name}}" class="btn btn-primary cart">QuickView</button></a></td>
-    
-    
+    <td ><a href="/customers/{{cs.name}}"><button id="cus{{cs.name}}" class="btn btn-primary cart">QuickView</button></a></td>    
   </element>
    </tr>
   {% endfor %}  
@@ -62,9 +45,6 @@
 
 </div>
     
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 {%endblock%}
 
-{%block js%}
-
-{%endblock%}
