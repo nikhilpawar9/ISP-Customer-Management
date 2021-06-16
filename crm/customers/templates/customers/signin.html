@@ -1,8 +1,13 @@
-{% extends 'customers/basic.html'%} {% block title%} Sign In{% endblock %}
-
+{% extends 'customers/basic.html'%}
+{% block title%}SignIn {% endblock %}
+{%block content%}
 <form action="" method="post" novalidate>
-  {% csrf_token %} {% for fm in form %} {{fm.label_tag}} {{fm}} {{fm.errors |
-  striptags}} <br /><br />
+<div className = "form-control">
+  {% csrf_token %} 
+  {% for fm in form %} 
+  {{fm.label_tag}}  {{fm}} {{fm.errors|striptags}} <br /><br />
   {% endfor %}
-  <input type="submit" value="Login" />
+  <input type="submit"  value="Login" />
+  </div>
 </form>
+{%endblock%}

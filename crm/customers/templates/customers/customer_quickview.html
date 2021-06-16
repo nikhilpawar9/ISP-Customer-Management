@@ -3,17 +3,78 @@
 {% block title%} View Customer{% endblock %}
 
 {%block content%}
-<div class="container my-4">
+  <div class="container my-4">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4"> 
             <div class="row">
-                <img src="/images/{{cs.customer_photo}}" width="233px" height="385px">
+                {{cs.customer_photo}}
             </div>
-        </div>
-        <div class="col-md-8">
-            <h5>Name: {{cs.name}}</h5>
-            <p>Address: {{cs.address}}</p>
+         </div> 
+        <div class="container-fluid">
+            <h4>Name:</h4> {{cs.name}}</p>
+            <h4>Pri Mobile:</h4> {{cs.primary_mobile}}</p>
+            <h4>Alt. Mobile: </h4>{{cs.alternate_mobile}}</p>
+            <h4>Email:</h4> {{cs.email}}</p>
+            
+            <h4>Address:</h4> <p>{{cs.address}}</p>
+            <h4>City:</h4> {{cs.city}}</p>
+            <h4>State:</h4> {{cs.state}}</p>
+            <h4>Zip Code:</h4> {{cs.zipcode}}</p>
+            <h4>Connection Type:</h4> {{cs.connection_type}}</p>
+            <h4>Cat 6 Cable length:</h4> {{cs.cat_6_cable_length}}</p>
+            <h4>P2P Device Price:</h4> {{cs.p2p_device_price}}</p>
+            <h4>Wireless Router Price:</h4> {{cs.wireless_router_price}}</p>
+            <h4>FTTH Fiber Length:</h4> {{cs.ftth_fiber_length}}</p>
+            <h4>Closer Box:</h4> {{cs.closer_box}}</p>
+            <h4>Patch Cord:</h4> {{cs.patch_cord}}</p>
+            <h4>FTTH Router Price:</h4> {{cs.ftth_router_price}}</p>
+            <h4>Inst. Charges:</h4> {{cs.installation_charges}}</p>
+            
+            
         </div>
     </div>
-</div>
+</div>  
+ {% comment %} <div class="container my-5 mx-10"> 
+   <table class="table table-bordered" border="1">  
+    <tr>
+        <th>Name</th> 
+        <th>Pri. Mobile</th>
+        <th>Alt. Mobile</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Zip Code</th>
+        <th>Connection Type</th>
+        <th>Cat 6 Cable Length</th>
+        <th>P2P Device Price</th>
+        <th>Wireless Router Price</th>
+        <th>FTTH Fiber Length</th>
+        <th>Closer Box</th>
+        <th>Patch Cord</th>
+        <th>FTTH Router Price</th>
+        <th>Inst. Charges</th>
+        
+    </tr>
+    
+    
+    <tr>
+    <td>{{cs.name}}</td>
+    <td>{{cs.primary_mobile}}</td>
+    <td>{{cs.alternate_mobile}}</td>
+    <td>{{cs.email}}</td>
+    <td>{{cs.address}}</td>
+    <td>{{cs.city}}</td>
+    <td>{{cs.state}}</td>
+    <td>{{cs.zipcode}}</td>
+    <td> {{cs.connection_type}}</td>
+    <td> {{cs.cat_6_cable_length}}</td>
+    <td> {{cs.p2p_device_price}}</td>
+    <td> {{cs.wireless_router_price}}</td>
+    <td> {{cs.ftth_fiber_length}}</td>
+    <td> {{cs.closer_box}}</td>
+    <td> {{cs.patch_cord}}</td>
+    <td> {{cs.ftth_router_price}}</td>
+    <td>{{cs.installation_charges}}</td>
+    </tr>  {% endcomment %}
 {%endblock%}

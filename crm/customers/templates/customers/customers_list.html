@@ -1,13 +1,18 @@
 {% extends 'customers/basic.html'%}
 {% block title%}Customers {% endblock %}
 {%block content%}
+{% load crispy_forms_filters %}
 
 <form method="post">
+<div class="container my-5">
+
 {% csrf_token %}
-{{form}}
-<input class="btn btn-primary" type="submit" value="Search" />
+{{form|crispy}}
+<input class="btn btn-primary" type="submit" value="Search Customer" />
+<a href = "{% url 'export-csv' %}" class="btn btn-primary">Export CSV</a> 
+</div>
 </form>
-   
+
    {% if customer_list %}  
    <div class="container my-5"> 
    <table class="table table-bordered" border="1">  
