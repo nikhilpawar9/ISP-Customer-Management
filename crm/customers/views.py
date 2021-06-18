@@ -1,6 +1,9 @@
+
 from django.shortcuts import render,redirect
 from django.http import HttpResponse, HttpResponseRedirect
+import csv
 from customers.models import Customer
+from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -8,7 +11,10 @@ from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomerSearchForm
 from django.conf import settings
 
-def home(request):
+from django.contrib.auth.decorators import login_required
+
+
+def dashboard(request):
     customer_count=Customer.objects.all().count()
     ftth_count = Customer.objects.filter(connection_type = 'ftth').count()
     wireless_count = Customer.objects.filter(connection_type = 'wireless').count()
@@ -21,6 +27,14 @@ def home(request):
     return render (request, 'customers/dashboard.html', context)
 
 
+
+
+def signout(request):
+    logout(request)
+    return render (request, 'customers/signout.html')
+
+
+
 def customersList(request):
     customer_list=Customer.objects.all()
     form = CustomerSearchForm(request.POST )
@@ -30,12 +44,13 @@ def customersList(request):
     }
     
     if request.method == 'POST':
-        customer_list=Customer.objects.filter(name = form['name'].value(),primary_mobile = form['primary_mobile'].value())   
+        customer_list=Customer.objects.filter(name = form['name'].value())   
         context = {
         "form": form,
         "customer_list": customer_list,
     }
     return render (request, 'customers/customers_list.html',context)
+
 
 
 
@@ -84,10 +99,17 @@ def addCustomer(request):
    
     return render (request, 'customers/addcustomer.html')
 
-  
-
-
-
+def user_profile(request):
+    return render(request, 'customers/profile.html')
+def sign_up(request):
+    if request.method == "POST":
+        fm = UserCreationForm(request.POST)
+        if fm.is_valid():
+            fm.save()
+    
+    else:
+        fm = UserCreationForm()
+    return render(request, 'customers/sign_up.html' , {'form' : fm})
 
 def signin(request):
     if request.method == "POST":
@@ -98,23 +120,26 @@ def signin(request):
             user = authenticate(username=uname, password=upass)
             if user is not None:
                 login(request, user)
-                return HttpResponseRedirect('/')
+                return HttpResponseRedirect('/dashboard')
     else:
         fm = AuthenticationForm()
 
     return render(request,'customers/signin.html', {'form' : fm})
 
-def user_profile(request):
-    return render(request, 'customers/profile.html')
-def logout(request):
-    return render (request, 'customers/logout.html')
 
 
-def signup(request):
-    if request.method == "POST":       
-        fm=UserCreationForm(request.POST)
-        if fm.is_valid():
-            fm.save()
-    else:
-        fm=UserCreationForm()
-    return render (request, 'customers/signup.html', {'form':fm})
+def export_csv(request):
+    customer_list=Customer.objects.all()
+
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition' ] = 'attachment; filename = Customers'+'.csv'
+    writer = csv.writer(response)
+    writer.writerow(['Name','Pri. Mobile','Alt. Mobile','Email','Address','Zip Code','City','State','Connection Type','Cat 6 Cable Length','P2P Device Price','Wireless Router Price','FTTH fiber Length','Closer Box','Patch Cord','FTTH Router Price','Inst. Charges','UserName'])
+    for cu in customer_list:
+         writer.writerow([cu.name,cu.primary_mobile,cu.alternate_mobile,cu.email,cu.address,cu.zipcode,cu.city,cu.state,cu.connection_type,cu.cat_6_cable_length,cu.p2p_device_price,cu.wireless_router_price,cu.ftth_fiber_length,cu.closer_box,cu.patch_cord,cu.ftth_router_price,cu.installation_charges,cu.username])
+
+    return response
+
+
+
+

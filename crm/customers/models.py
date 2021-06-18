@@ -2,9 +2,9 @@ from django.db import models
 
 
 class Customer(models.Model):
-    name = models.CharField(max_length=100, primary_key = True)
+    name = models.CharField(max_length=100, primary_key = True , blank = True)
     email = models.CharField(max_length=100, default= "admin@ithreesystem.com")
-    primary_mobile = models.IntegerField( default=0)
+    primary_mobile = models.IntegerField( default=0 , blank = True)
     alternate_mobile = models.IntegerField( default=0 )
     address = models.CharField(max_length=400, default="Jejuri")
     city = models.CharField(max_length=10, default="Jejuri")
@@ -21,7 +21,7 @@ class Customer(models.Model):
     # ftth
     ftth_fiber_length= models.IntegerField( )
     closer_box = models.CharField(max_length=5 )
-    patch_cord= models.IntegerField( )
+    patch_cord= models.IntegerField(blank=True )
     ftth_router_price= models.IntegerField()
 
     

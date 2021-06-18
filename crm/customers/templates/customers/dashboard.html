@@ -22,10 +22,14 @@
     <div class="col-md-4">
       <div class="card">
         <div class="card-header bg-info text-white">Information</div>
-        <div class="card-body">
+        <div class="card-body align-items-center">
           <marquee behavior="" direction="">
             <h3 class="my-4">This is the Information</h3>
           </marquee>
+          <a class="btn btn-secondary" href="http://127.0.0.1:8000/addcustomer" role="button"
+          rel="nofollow" target="_blank">Add User</a>
+        <a class="btn btn-secondary" href="http://127.0.0.1:8000/customers" target="_blank"
+          role="button">Search User</a>
         </div>
       </div>
     </div>
@@ -43,7 +47,7 @@
               </a>
             </div>
             <div class="col-md-4">
-              <a class="text-decoration-none text-dark" href="product.html">
+              <a class="text-decoration-none text-dark" href="">
                 <div class="card my-card shadow text-center p-3">
                   <h4>FTTH Users <i class="fas fa-box"></i></h4>
                   <h3>{{ftth_count}}</h3>
@@ -51,7 +55,7 @@
               </a>
             </div>
             <div class="col-md-4">
-              <a class="text-decoration-none text-dark" href="order.html">
+              <a class="text-decoration-none text-dark" href="">
                 <div class="card my-card shadow text-center p-3">
                   <h4>Wireless Users <i class="fas fa-shipping-fast"></i></h4>
                   <h3>{{wireless_count}}</h3>
@@ -163,10 +167,9 @@
             },
           });
         </script>
-      </div>
-    </div>
-  </div>
-</div>
+
+
+
 <!--End Graphs-->
 
 {%endblock%} {%block js%}
