@@ -1,8 +1,4 @@
-{% extends 'customers/basic.html'%}
-
-{% block title%} Dashboard{% endblock %}
-
-
+{% extends 'customers/basic.html'%} {% block title%} Dashboard{% endblock %}
 {%block css%}
 <style>
   #intro {
@@ -14,27 +10,178 @@
   }
 
   @media (min-width: 992px) {
-    
   }
 
   .navbar .nav-link {
     color: rgb(160, 160, 160) !important;
   }
 </style>
-{%endblock%}
-
-{%block content%}
-<div id="intro" class="bg-image shadow-2-strong vertical-center ">
-  <div class="mask " style="background-color: rgba(0, 0, 0, 0.8);">
-    <div class="container  justify-content-center text-center h-100 ">
-      <div class="text-white">
-        <h1 class="mb-5">ISP Customer Management</h1>
-        <a class="btn btn-outline-light btn-lg m-3" href="http://127.0.0.1:8000/addcustomer" role="button"
-          rel="nofollow" target="_blank">Add User</a>
-        <a class="btn btn-outline-light btn-lg m-3" href="http://127.0.0.1:8000/customers" target="_blank"
-          role="button">Search User</a>
+{%endblock%} {%block content%}
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header bg-info text-white">Information</div>
+        <div class="card-body">
+          <marquee behavior="" direction="">
+            <h3 class="my-4">This is the Information</h3>
+          </marquee>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header bg-info text-white">Statistics</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-4">
+              <a class="text-decoration-none text-dark" href="customers">
+                <div class="card my-card shadow text-center p-3">
+                  <h4>Total Customers <i class="fas fa-users"></i></h4>
+                  <h3>{{customer_count}}</h3>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-4">
+              <a class="text-decoration-none text-dark" href="product.html">
+                <div class="card my-card shadow text-center p-3">
+                  <h4>FTTH Users <i class="fas fa-box"></i></h4>
+                  <h3>{{ftth_count}}</h3>
+                </div>
+              </a>
+            </div>
+            <div class="col-md-4">
+              <a class="text-decoration-none text-dark" href="order.html">
+                <div class="card my-card shadow text-center p-3">
+                  <h4>Wireless Users <i class="fas fa-shipping-fast"></i></h4>
+                  <h3>{{wireless_count}}</h3>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+<!--End Topside-->
+
+<!--Graphs-->
+<div class="container">
+  <div class="row my-5">
+    <div class="col-md-6">
+      <div class="bg-white">
+        <canvas id="myChart1" width="400" height="300"></canvas>
+        <script>
+          var ctx = document.getElementById("myChart1").getContext("2d");
+          var myChart1 = new Chart(ctx, {
+            type: "pie",
+            data: {
+              labels: ["Ftth", "Wireless", "Yellow", "Green", "Purple", "Orange"],
+              datasets: [
+                {
+                  label: "Products",
+                  data: [{{ftth_count}}, {{wireless_count}}, 3, 5, 2, 3],
+                  backgroundColor: [
+                    "rgba(255, 99, 132, 1)",
+                    "rgba(54, 162, 235, 1)",
+                    "rgba(255, 206, 86, 1)",
+                    "rgba(75, 192, 192, 1)",
+                    "rgba(153, 102, 255, 1)",
+                    "rgba(255, 159, 64, 1)",
+                  ],
+                  borderColor: [
+                    "rgba(255, 99, 132, 1)",
+                    "rgba(54, 162, 235, 1)",
+                    "rgba(255, 206, 86, 1)",
+                    "rgba(75, 192, 192, 1)",
+                    "rgba(153, 102, 255, 1)",
+                    "rgba(255, 159, 64, 1)",
+                  ],
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              scales: {
+                yAxes: [
+                  {
+                    ticks: {
+                      beginAtZero: true,
+                    },
+                  },
+                ],
+              },
+            },
+          });
+        </script>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="bg-white">
+        <canvas id="myChart" width="400" height="300"></canvas>
+        <script>
+          var ctx = document.getElementById("myChart").getContext("2d");
+          var myChart = new Chart(ctx, {
+            type: "bar",
+            data: {
+              labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+              datasets: [
+                {
+                  label: "Products",
+                  data: [{{ftth_count}}, 19, 3, 5, 2, 3],
+                  backgroundColor: [
+                    "rgba(255, 99, 132, 1)",
+                    "rgba(54, 162, 235, 1)",
+                    "rgba(255, 206, 86, 1)",
+                    "rgba(75, 192, 192, 1)",
+                    "rgba(153, 102, 255, 1)",
+                    "rgba(255, 159, 64, 1)",
+                  ],
+                  borderColor: [
+                    "rgba(255, 99, 132, 1)",
+                    "rgba(54, 162, 235, 1)",
+                    "rgba(255, 206, 86, 1)",
+                    "rgba(75, 192, 192, 1)",
+                    "rgba(153, 102, 255, 1)",
+                    "rgba(255, 159, 64, 1)",
+                  ],
+                  borderWidth: 1,
+                },
+              ],
+            },
+            options: {
+              scales: {
+                yAxes: [
+                  {
+                    ticks: {
+                      beginAtZero: true,
+                    },
+                  },
+                ],
+              },
+            },
+          });
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End Graphs-->
+
+{%endblock%} {%block js%}
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+  integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+  crossorigin="anonymous"
+></script>
 {%endblock%}

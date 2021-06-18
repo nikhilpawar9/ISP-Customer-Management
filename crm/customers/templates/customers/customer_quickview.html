@@ -1,13 +1,12 @@
 {% extends 'customers/basic.html'%}
 
 {% block title%} View Customer{% endblock %}
-
 {%block content%}
 <div class="container my-4">
     <div class="row">
         <div class="col-md-4">
             <div class="row">
-                <img src="/images/{{cs.customer_photo}}" width="233px" height="385px">
+                <img src='../media/{{cs.customer_photo}}' width="120px" height="220px">
             </div>
         </div>
         <div class="col-md-8">

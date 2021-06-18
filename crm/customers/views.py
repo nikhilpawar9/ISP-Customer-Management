@@ -6,13 +6,22 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 from .forms import CustomerSearchForm
-
+from django.conf import settings
 
 def home(request):
-    return render (request, 'customers/dashboard.html')
+    customer_count=Customer.objects.all().count()
+    ftth_count = Customer.objects.filter(connection_type = 'ftth').count()
+    wireless_count = Customer.objects.filter(connection_type = 'wireless').count()
+    context = {
+        "ftth_count": ftth_count,
+        "wireless_count":wireless_count,
+        "customer_count":customer_count
+    }
+    customer_list=Customer.objects.all()
+    return render (request, 'customers/dashboard.html', context)
 
 
-def customers_list(request):
+def customersList(request):
     customer_list=Customer.objects.all()
     form = CustomerSearchForm(request.POST )
     context = {
@@ -34,7 +43,7 @@ def customerQuickView(request,customername):
     cs = Customer.objects.filter(name=customername)
     return render(request,'customers/customer_quickview.html',{'cs':cs[0]})
 
-def addcustomer(request):
+def addCustomer(request):
     if (request.method== 'POST'  ) :
         name = request.POST.get('name')
         email = request.POST.get('email')
