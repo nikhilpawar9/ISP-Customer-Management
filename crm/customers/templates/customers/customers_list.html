@@ -2,6 +2,18 @@
 {% block title%}Customers {% endblock %}
 {%block content%}
 {% load crispy_forms_filters %}
+<style>
+@media only screen and  (min-width:1200px) {
+        .mobile{
+            display: none;
+        }
+    }
+@media only screen and  (max-width: 1200px) {
+        .desktop{
+            display: none;
+        }
+    }
+</style>
 
 <form method="post">
 <div class="container my-5">
@@ -15,40 +27,74 @@
 
    {% if customer_list %}  
    <div class="container my-5"> 
-   <table class="table table-bordered" border="1">  
+   <table class="table caption-top table-responsive align-middle" >  
     <tr>
-        <th>Name</th> 
-        <th>Pri. Mobile</th>
-        <th>Alt. Mobile</th>
-        <th>Email</th>
-        <th>Address</th>
-        <th>Zip Code</th>
-        <th>Connection Type</th>
-        <th>Inst. Charges</th>
-        <th>Action</th>
+    <thead class="table-info fw-bolder ">
+        <th class="desktop">Name</th> 
+        <th class="desktop">Pri. Mobile</th>
+        <th class="desktop">Alt. Mobile</th>
+        <th class="desktop">Email</th>
+        <th class="desktop">Address</th>
+        <th class="desktop">Zip Code</th>
+        <th class="desktop">Connection Type</th>
+        <th class="desktop">Inst. Charges</th>
+        <th class="desktop">Action</th>
+        </thead>
     </tr>
     
     {% for cs in customer_list %}
-    <tr>
-    <td>{{cs.name}}</td>
-    <td>{{cs.primary_mobile}}</td>
-    <td>{{cs.alternate_mobile}}</td>
-    <td>{{cs.email}}</td>
-    <td>{{cs.address}}</td>
-    <td>{{cs.zipcode}}</td>
-    <td> {{cs.connection_type}}</td>
-    <td>{{cs.installation_charges}}</td>
-    <td ><a href="/customers/{{cs.name}}"><button id="cus{{cs.name}}" class="btn btn-primary cart">QuickView</button></a></td>    
+    <tr class="fst-normal">
+    <td class="desktop">{{cs.name}}</td>
+    <td class="desktop">{{cs.primary_mobile}}</td>
+    <td class="desktop">{{cs.alternate_mobile}}</td>
+    <td class="desktop">{{cs.email}}</td>
+    <td class="desktop">{{cs.address}}</td>
+    <td class="desktop">{{cs.zipcode}}</td>
+    <td class="desktop"> {{cs.connection_type}}</td>
+    <td class="desktop">{{cs.installation_charges}}</td>
+    <td class="desktop"><a href="/customers/{{cs.name}}"><button id="cus{{cs.name}}" class="btn btn-primary cart">QuickView</button></a></td>    
   </element>
    </tr>
   {% endfor %}  
   </table>
+
+  
 
   {% else %}
    <h2>No Data</h2>
   {% endif %}
 
 </div>
+{% if customer_list %}  
+  <div class="container my-5">
+     <table class="table caption-top table-responsive align-middle" >  
+
+    <tr>
+        <th class="mobile">Name</th> 
+        <th class="mobile">Pri. Mobile</th> 
+        
+    </tr>
+    
+    
+    {% for cs in customer_list %}
+    <tr>
+    <td class="mobile"><a href="/customers/{{cs.name}}" style="text-decoration: none" id="cus{{cs.name}}" >{{cs.name}} </a></td>
+    <td class="mobile">{{cs.primary_mobile}} </td>
+    
+    
+    <td ></td>    
+  </element>
+   </tr>
+  {% endfor %}  
+  </table>
+  </div>
+
+  
+
+  {% else %}
+   <h2>No Data</h2>
+  {% endif %}
+
     
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 {%endblock%}
