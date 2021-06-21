@@ -12,9 +12,7 @@ urlpatterns = [
     path("customers/<customername>", views.customerQuickView),
     path('signin', views.signin),
     path('logout', views.logout),
-    # path('signup', views.signup),
-    
-    
+    # path('signup', views.signup),   
     path('sign_up', views.sign_up , name='sign_up'),
     path('dashboard', views.dashboard),
     path('signout', views.signout),
