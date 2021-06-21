@@ -2,14 +2,26 @@
 
 {% block title%} View Customer{% endblock %}
 {%block content%}
-  <div class="container my-4">
+<div class="container my-4">
     <div class="row">
-        <div class="col-md-4"> 
+        <div class="col-md-4">
             <div class="row">
-                <img src='../media/{{cs.customer_photo}}' width="120px" height="220px">
+                <img src="../media/{{cs.customer_photo}}" width="233px" height="233px">
             </div>
-         </div> 
-        <div class="container-fluid">
+        </div>
+        <div class="col-md-8">
+            <h4>Name</h4>
+            <h6>{{cs.name}}</h6>
+            <p>{{cs.alternate_mobile}}</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% comment %} ____________________________________________________ {% endcomment %}
+{% comment %}  
             <h4>Name:</h4> {{cs.name}}</p>
             <h4>Pri Mobile:</h4> {{cs.primary_mobile}}</p>
             <h4>Alt. Mobile: </h4>{{cs.alternate_mobile}}</p>
@@ -27,11 +39,7 @@
             <h4>Closer Box:</h4> {{cs.closer_box}}</p>
             <h4>Patch Cord:</h4> {{cs.patch_cord}}</p>
             <h4>FTTH Router Price:</h4> {{cs.ftth_router_price}}</p>
-            <h4>Inst. Charges:</h4> {{cs.installation_charges}}</p>
+            <h4>Inst. Charges:</h4> {{cs.installation_charges}}</p> {% endcomment %}
             
-            
-        </div>
-    </div>
-</div>  
  
 {%endblock%}
