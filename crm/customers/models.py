@@ -5,7 +5,7 @@ class Customer(models.Model):
     name = models.CharField(max_length=100, primary_key = True , blank = True)
     email = models.CharField(max_length=100, default= "admin@ithreesystem.com")
     primary_mobile = models.IntegerField( default=0 , blank = True)
-    alternate_mobile = models.IntegerField( default=0 )
+    alternate_mobile = models.IntegerField( default=0 ,blank = True)
     address = models.CharField(max_length=400, default="Jejuri")
     city = models.CharField(max_length=10, default="Jejuri")
     state = models.CharField(max_length=15, default="Maharashtra")

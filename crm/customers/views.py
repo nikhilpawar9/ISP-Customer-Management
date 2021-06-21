@@ -13,7 +13,7 @@ from django.conf import settings
 
 from django.contrib.auth.decorators import login_required
 
-
+@login_required(login_url='/signin')
 def dashboard(request):
     customer_count=Customer.objects.all().count()
     ftth_count = Customer.objects.filter(connection_type = 'ftth').count()
@@ -28,13 +28,13 @@ def dashboard(request):
 
 
 
-
+@login_required(login_url='/signin')
 def signout(request):
     logout(request)
     return render (request, 'customers/signout.html')
 
 
-
+@login_required(login_url='/signin')
 def customersList(request):
     customer_list=Customer.objects.all()
     form = CustomerSearchForm(request.POST )
@@ -53,11 +53,11 @@ def customersList(request):
 
 
 
-
+@login_required(login_url='/signin')
 def customerQuickView(request,customername):
     cs = Customer.objects.filter(name=customername)
     return render(request,'customers/customer_quickview.html',{'cs':cs[0]})
-
+@login_required(login_url='/signin')
 def addCustomer(request):
     if (request.method== 'POST'  ) :
         name = request.POST.get('name')
@@ -99,13 +99,16 @@ def addCustomer(request):
    
     return render (request, 'customers/addcustomer.html')
 
+@login_required(login_url='/signin')
 def user_profile(request):
     return render(request, 'customers/profile.html')
+
 def sign_up(request):
     if request.method == "POST":
         fm = UserCreationForm(request.POST)
         if fm.is_valid():
             fm.save()
+            messages.success(request, 'Signed Up Successfully')
     
     else:
         fm = UserCreationForm()
@@ -123,11 +126,12 @@ def signin(request):
                 return HttpResponseRedirect('/dashboard')
     else:
         fm = AuthenticationForm()
+        messages.success(request, 'Signed in successfully.')
 
     return render(request,'customers/signin.html', {'form' : fm})
 
 
-
+@login_required(login_url='/signin')
 def export_csv(request):
     customer_list=Customer.objects.all()
 

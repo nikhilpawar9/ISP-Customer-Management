@@ -2,6 +2,18 @@
 {% block title%}Customers {% endblock %}
 {%block content%}
 {% load crispy_forms_filters %}
+<style>
+@media only screen and  (min-width:1200px) {
+        .mobile{
+            display: none;
+        }
+    }
+@media only screen and  (max-width: 1200px) {
+        .desktop{
+            display: none;
+        }
+    }
+</style>
 
 <form method="post">
   <div class="container my-5">
@@ -53,6 +65,8 @@
       </table>
     </div>
   </div>
+
+  
 
   {% else %}
   <h2>No Data</h2>
