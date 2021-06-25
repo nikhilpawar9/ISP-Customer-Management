@@ -1,45 +1,150 @@
-{% extends 'customers/basic.html'%}
-
-{% block title%} View Customer{% endblock %}
+{% extends 'customers/basic.html'%} {% block title%} View Customer{% endblock %}
 {%block content%}
-<div class="container my-4">
-    <div class="row">
-        <div class="col-md-4">
-            <div class="row">
-                <img src="../media/{{cs.customer_photo}}" width="233px" height="233px">
-            </div>
-        </div>
-        <div class="col-md-8">
-            <h4>Name</h4>
-            <h6>{{cs.name}}</h6>
-            <p>{{cs.alternate_mobile}}</p>
-        </div>
+
+  
+<style>
+   
+</style>
+<div class="container my-5">
+    
+    <div class="d-flex ">
+        
+      </div>
+      <h1>Personal Details</h1><br>
+  <div class="row">
+    <div class="col-md-4">
+
+    <img src="/media//{{cs.customer_photo}}" width="200px" height="220px" />
+  </div>
+    <div class="col-md-4">
+      <h3 style="display: inline">Name:</h3>
+      <h4 style="display: inline">{{cs.name}}</h4>
+      <br />
+      <br width="300px" />
+      <h3 style="display: inline">Phone Number:</h3>
+      <h4 style="display: inline">{{cs.primary_mobile}}</h4>
+      <br />
+      <br width="300px" />
+      <h3 style="display: inline">Alternate Number:</h3>
+      <h4 style="display: inline">{{cs.alternate_mobile}}</h4>
+      <br />
+      <br width="300px" />
+      <h3 style="display: inline">Email:</h3>
+      <h4 style="display: inline">{{cs.email}}</h4>
     </div>
+    <br />
+    <div class="col-md-4">
+      <h3 style="display: inline">Address:</h3>
+      <h4 style="display: inline">{{cs.address}}</h4>
+      <br />
+      <br width="300px" />
+      <h3 style="display: inline">City:</h3>
+      <h4 style="display: inline">{{cs.city}}</h4>
+      <br />
+      <br width="300px" />
+      <h3 style="display: inline">Zip:</h3>
+      <h4 style="display: inline">{{cs.zip}}</h4>
+      <br />
+      <br width="300px" />
+      <h3 style="display: inline">State:</h3>
+      <h4 style="display: inline">{{cs.state}}</h4>
+      <br />
+    </div>
+  </div>
+<br>
+  <br>
+    
+  <h1>Connecion Details:</h1>
+  <br>
+
+  <div class="row">
+    
+    <div class="col">
+      <h3 style="display: inline">Connection Type:</h3>
+      <h4 style="display: inline">{{cs.connection_type}}</h4>
+      <br />
+      <br width="300px" />
+      <h3 style="display: inline">Cat-6 Cable Length:</h3>
+      <h4 style="display: inline">{{cs.cat_6_cable_length}}</h4>
+      <br />
+      <br width="300px" />
+      <h3 style="display: inline">P2P Device Price:</h3>
+      <h4 style="display: inline">{{cs.p2p_device_price}}</h4>
+      <br />
+      <br width="300px" />
+      <h3 style="display: inline">Wireless Router Price:</h3>
+      <h4 style="display: inline">{{cs.wireless_router_price}}</h4>
+      <br />
+      <br width="300px" />
+      <h3 style="display: inline">Installation harges:</h3>
+        <h4 style="display: inline">{{cs.installation_charges}}</h4>
+    </div>
+    <div class="col">
+        <h3 style="display: inline">Fiber Length:</h3>
+        <h4 style="display: inline">{{cs.ftth_fiber_length}}</h4>
+        <br />
+        <br width="300px" />
+        <h3 style="display: inline">Closer Box:</h3>
+        <h4 style="display: inline">{{cs.closer_box}}</h4>
+        <br />
+        <br width="300px" />
+        <h3 style="display: inline">Patch Cord:</h3>
+        <h4 style="display: inline">{{cs.patch_cord}}</h4>
+        <br />
+        <br width="300px" />
+        <h3 style="display: inline">Router Price:</h3>
+        <h4 style="display: inline">{{cs.ftth_router_price}}</h4>
+        <br />
+        <br width="300px" />
+      </div>
+        
+  </div>
+  <br style="height:5px;border-width:4;color:gray;background-color:black"> 
+
+
+<h1>ONT/ONU Info:</h1><br>
+<div class="row">
+<div class="col">
+    <h3 style="display: inline">UserName:</h3>
+    <h4 style="display: inline">{{cs.username}}</h4>
+    <br />
+</div>
+<div class="col">
+    <h3 style="display: inline">PassWord:</h3>
+    <h4 style="display: inline">{{cs.password}}</h4>
+    <br />
+    </div>
+</div>
+<br style="height:5px;border-width:4;color:gray;background-color:black">
+
+<h1>KYC Details:</h1><br>
+<div class="row">
+    <div class="col-sm-4">
+      <img src="/media//{{cs.kYC_document}}" width="200px" height="220px" />
+    </div>
+
 </div>
 
 
-
-
-{% comment %} ____________________________________________________ {% endcomment %}
+<!-- {% comment %} ____________________________________________________ {% endcomment %}
 {% comment %}  
-            <h4>Name:</h4> {{cs.name}}</p>
-            <h4>Pri Mobile:</h4> {{cs.primary_mobile}}</p>
-            <h4>Alt. Mobile: </h4>{{cs.alternate_mobile}}</p>
-            <h4>Email:</h4> {{cs.email}}</p>
+            <p>Name:</p> {{cs.name}}</p>
+            <p>Pri Mobile:</p> {{cs.primary_mobile}}</p>
+            <p>Alt. Mobile: </p>{{cs.alternate_mobile}}</p>
+            <p>Email:</p> {{cs.email}}</p>
             
-            <h4>Address:</h4> <p>{{cs.address}}</p>
-            <h4>City:</h4> {{cs.city}}</p>
-            <h4>State:</h4> {{cs.state}}</p>
-            <h4>Zip Code:</h4> {{cs.zipcode}}</p>
-            <h4>Connection Type:</h4> {{cs.connection_type}}</p>
-            <h4>Cat 6 Cable length:</h4> {{cs.cat_6_cable_length}}</p>
-            <h4>P2P Device Price:</h4> {{cs.p2p_device_price}}</p>
-            <h4>Wireless Router Price:</h4> {{cs.wireless_router_price}}</p>
-            <h4>FTTH Fiber Length:</h4> {{cs.ftth_fiber_length}}</p>
-            <h4>Closer Box:</h4> {{cs.closer_box}}</p>
-            <h4>Patch Cord:</h4> {{cs.patch_cord}}</p>
-            <h4>FTTH Router Price:</h4> {{cs.ftth_router_price}}</p>
-            <h4>Inst. Charges:</h4> {{cs.installation_charges}}</p> {% endcomment %}
-            
- 
+            <p>Address:</p> <p>{{cs.address}}</p>
+            <p>City:</p> {{cs.city}}</p>
+            <p>State:</p> {{cs.state}}</p>
+            <p>Zip Code:</p> {{cs.zipcode}}</p>
+            <p>Connection Type:</p> {{cs.connection_type}}</p>
+            <p>Cat 6 Cable length:</p> {{cs.cat_6_cable_length}}</p>
+            <p>P2P Device Price:</p> {{cs.p2p_device_price}}</p>
+            <p>Wireless Router Price:</p> {{cs.wireless_router_price}}</p>
+            <p>FTTH Fiber Length:</p> {{cs.ftth_fiber_length}}</p>
+            <p>Closer Box:</p> {{cs.closer_box}}</p>
+            <p>Patch Cord:</p> {{cs.patch_cord}}</p>
+            <p>FTTH Router Price:</p> {{cs.ftth_router_price}}</p>
+            <p>Inst. Charges:</p> {{cs.installation_charges}}</p> {% endcomment %} -->
+
 {%endblock%}
