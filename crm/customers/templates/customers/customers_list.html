@@ -26,8 +26,8 @@
 </form>
 
    {% if customer_list %}  
-   <div class="container my-5"> 
-   <table class="table caption-top table-responsive align-middle" >  
+   <div class="container-fluid my-4 pl-5 pr-5 "> 
+  <table class="table align-middle table-bordered" > 
     <tr>
     <thead class="table-info fw-bolder ">
         <th class="desktop">Name</th> 
@@ -82,7 +82,7 @@
     
     
     
-    <td ></td>    
+       
   </element>
    </tr>
   {% endfor %}  
@@ -92,7 +92,7 @@
   
 
   {% else %}
-   <h2>No Data</h2>
+   <h2 class="mobile">No Data</h2>
   {% endif %}
 
     

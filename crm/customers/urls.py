@@ -2,6 +2,7 @@ from django.urls import path,include
 from django.conf import settings
 from django.urls import path, include
 from django.conf.urls.static import static
+from django.conf.urls import url
 from . import views
 
 urlpatterns = [
@@ -13,6 +14,9 @@ urlpatterns = [
     path('signin', views.signin),
     path('logout', views.logout),
     # path('signup', views.signup),   
+
+ 
+    
     path('sign_up', views.sign_up , name='sign_up'),
     path('dashboard', views.dashboard),
     path('signout', views.signout),
