@@ -20,7 +20,7 @@ const App = () => {
 
 
   const [currentPage, setCurrentPage] = useState(1)         //for pages
-  const [customersperPage, setCustomersperPage] = useState(2)        //10 items in table on single page
+  const [customersperPage, setCustomersperPage] = useState(10)        //10 items in table on single page
 
 
 
