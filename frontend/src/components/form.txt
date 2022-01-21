@@ -1,0 +1,259 @@
+<div className="g-3 my-3 bg-light p-3">
+          <h5>Connection Details</h5>
+          <div className="col-md-2 my-4">
+          <h5>
+            <label for="connectiontype" className="form-label">
+              Connection Type
+            </label>
+            </h5>
+            <div className="btn_grp">
+            <div className="btn1">
+              <p  value={connection_type} onClick={() => setConnectionType("ftth")}>FTTH</p>
+            </div>
+            <div className="btn1">
+            <p value={connection_type} onClick={() => setConnectionType("wireless")}>Wireless</p>
+            </div>
+            </div>
+          </div>
+
+          {/*wireless*/}
+          {connectionType == "ftth" && <div className="row" id="ftth-form" >
+          <h4>Fiber to Home</h4>
+            <div className="col-lg-4">
+              <label for="fiberlength" className="form-label">
+                Fiber length
+              </label>
+              <div className="input-group mb-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder=""
+                  aria-label="fiberlength"
+                  aria-describedby="fiberlength"
+                  name="ftthfiberlength"
+                  value={ftth_fiber_length}
+                />
+                <span className="input-group-text" id="ftthfiberlength">
+                  Meters
+                </span>
+              </div>
+            </div>
+      
+            <div className="col-lg-4">
+              <label for="ftthrouterprice" className="form-label">
+                Router Price
+              </label>
+              <div className="input-group mb-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  placeholder=""
+                  aria-label="ftthrouterprice"
+                  aria-describedby="ftthrouterprice"
+                  name="ftthrouterprice"
+                  value={ftth_router_price}
+                />
+                <span className="input-group-text" id="ftthrouterprice">
+                  Rupees
+                </span>
+              </div>
+            </div>
+            <div className="col-lg-4">
+              <label for="closerbox" className="form-label">
+                Closer Box
+              </label>
+              <select id="closerbox" className="form-select" name="closerbox">
+                {/* <option disabled selected>--Select size--</option>*/}
+                <option>Mini</option>
+                <option>Big</option>
+              </select>
+            </div>
+            <div className="col-lg-4">
+              <label for="patchcord" className="form-label">
+                Patch Cord
+              </label>
+              <div className="input-group mb-3">
+                <input
+                  type="text"
+                  className="form-control"
+                  aria-label="Patch Cord"
+                  aria-describedby="patchcord"
+                  name="patchcord"
+                  value={patch_cord}
+                />
+                <span className="input-group-text" id="patchcord">
+                  Nos.
+                </span>
+              </div>
+            </div>
+          </div>}
+
+          {connectionType == "wireless" && <div class="row" id="wireless-form">
+          <h4>Wireless</h4>
+              <div class="col-lg-4">
+                <label for="catcable" class="form-label">Cat 6 cable length</label>
+                <div class="input-group mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    aria-label="Fiber length"
+                    aria-describedby="catcablelength"
+                    name="catcablelength"
+                    value={cat_cable_length}
+                  />
+                  <span class="input-group-text" id="catcablelength">Meters</span>
+                </div>
+              </div>
+      
+              <div class="col-lg-3">
+                <label for="p2pdevice" class="form-label">P2P Device Price</label>
+                <div class="input-group mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    aria-label="p2pdevice"
+                    aria-describedby="p2pdevice"
+                    name="p2pdevice"
+                    value={p2p_device_price}
+                  />
+                  <span class="input-group-text" id="p2pdevice">Rupees</span>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <label for="routerprice" class="form-label"
+                  >Wireless Router Price</label>
+                <div class="input-group mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder=""
+                    aria-label="routerprice"
+                    aria-describedby="wirerouterprice"
+                    name="wirelessrouterprice"
+                    id="wirelessrouterprice"
+                    value={wireless_router_price}
+                  />
+                  <span class="input-group-text">Rupees</span>
+                </div>
+              </div>
+            </div>
+       }
+
+          {/*ftth*/}
+
+          <div className="row">
+            <div className="col-lg-4">
+              <label for="installationcharges" className="form-label">
+                Installation Charges
+              </label>
+              <div className="input-group mb-3">
+                <input
+                  type="number"
+                  className="form-control"
+                  aria-label="installationcharges"
+                  aria-describedby="installationcharges"
+                  name="installationcharges"
+                  value={installation_charges}
+                />
+                <span className="input-group-text" id="installationcharges">
+                  Rupees
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="row">
+            <label for="ont" className="form-label">
+              ONT/ONU Info
+            </label>
+
+            <div className="col-md-5 my-1">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Username"
+                name="ontusername"
+                id="ontusername"
+                value={username}
+              />
+            </div>
+            <div className="col-md-5 my-1">
+              <input
+                type="text"
+                className="form-control"
+                id="ontpassword"
+                placeholder="Password"
+                name="ontpassword"
+                value={password}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/*KYC details SECTION*/}
+        <div className="row g-3 my-3 bg-light p-3">
+          <h5>KYC Details</h5>
+          <div className="col-md-5">
+            <label for="photo" className="form-label">
+              Photo
+            </label>
+            <div className="input-group mb-3">
+              <input
+                type="file"
+                onchange="previewPhoto(this);"
+                name="customerphoto"
+                id="customerphoto"
+                value={cust_photo}
+              />
+
+              <div className="input-group mb-3">
+                <img
+                  id="photopreview"
+                  src="#"
+                  alt="your image"
+                  style={{ display: "none" }}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="col-md-6">
+            <label for="inputName" className="form-label">
+              Documents
+            </label>
+            <div className="input-group mb-3">
+              <input
+                type="file"
+                onchange="previewDoc(this);"
+                name="kycdocument"
+                id="kycdocument"
+                value={kyc_doc}
+              />
+              
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+            connection_type:"",
+    cat_cable_length:"",
+    p2p_device_price:"",
+    wireless_router_price:"",
+    ftth_fiber_length:"",
+    closer_box:"",
+    patch_cord:"",
+    ftth_router_price:"",
+    installation_charges:"",
+    username:"",
+    password:"",
+    cust_photo:"",
+    kyc_doc:""

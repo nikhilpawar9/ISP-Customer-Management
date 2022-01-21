@@ -1,0 +1,27 @@
+.tablem{
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+    align-items:center ;
+    width: 700px;
+}
+.headingWeb{
+    display: block !important;
+}
+/* .webLink{
+    display: block !important;
+} */
+
+.lists{
+    display:flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start; 
+}
+
+ .ourList{
+    max-width:650px !important;
+}
+.details{
+    width: 100%;
+}
