@@ -78,6 +78,9 @@ const Details = ({ match }) => {
           <Divider light />
           <ListItem button>
             <ListItemText secondary={details.address} primary="Address" />
+            <img src={details.cust_photo} alt="sd" />
+            <img src={details.cust_photo} alt="" />
+
           </ListItem>
           <Divider light />
           <ListItem button>

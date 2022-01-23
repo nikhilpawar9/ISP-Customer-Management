@@ -14,11 +14,11 @@ class CustomerView(APIView):
         id = pk
         if id is not None:
             cust = Customer.objects.get(id=id)
-            serializer = CustomerSerializer(cust)
+            serializer = CustomerSerializer(cust , context={"request":request})
             return Response(serializer.data)
 
         cust = Customer.objects.all()
-        serializer = CustomerSerializer(cust, many =True)
+        serializer = CustomerSerializer(cust,context={"request":request}, many =True)
         return Response(serializer.data)
 
     def post(self,request,format=None):
@@ -44,3 +44,8 @@ class CustomerView(APIView):
         cust = Customer.objects.get(pk=id)
         cust.delete()
         return Response({'msg':'deleted data'})
+
+    # def post(self,request, *args, **kwargs):
+    #     cust_photo = request.data['cust_photo']
+    #     kyc_doc = request.data['kyc_doc']
+    #     Customer.objects.create(cust_photo=cust_photo,kyc_doc = kyc_doc)

@@ -28,6 +28,9 @@ class Customer(models.Model):
     username = models.CharField(max_length=400, default="user")
     password = models.CharField(max_length=400, default="pass")
 
+    # def nameFile(instance, filename):
+    #  return 'images/{filename}'.format(filename=filename)
+
 
     cust_photo = models.ImageField(upload_to="media", blank=True)
     kyc_doc = models.ImageField(upload_to="media", blank=True)

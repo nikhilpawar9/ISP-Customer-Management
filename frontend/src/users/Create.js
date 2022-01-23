@@ -17,20 +17,34 @@ import { addUserDetails } from "../components/APIcalls";
 const Create = () => {
   const navigate = useNavigate();
 
+  const [image, setImage] = useState(null);
+
   const [customers, setCustomers] = useState({
     name: "",
     email: "",
     primary_mobile: "",
+    cust_photo: "",
   });
 
-  const { name, email, primary_mobile } = customers;
+  const { name, email, primary_mobile,cust_photo } = customers;
 
   const onValueChange = (e) => {
     console.log(e.target.value);
+    if([e.target.name] == "cust_photo"){
+      setImage({
+        cust_photo: e.target.files
+      })
+    }
+    else{
 
-    setCustomers({ ...customers, [e.target.name]: e.target.value });
-    console.log(customers)
+      setCustomers({ ...customers, [e.target.name]: e.target.value });
+      console.log(customers)
+    }
+
   };
+
+
+
   const addCust = async() =>{
     return await Axios.post(`http://127.0.0.1:8000/customers/`, customers) 
   }
@@ -63,6 +77,16 @@ const Create = () => {
           name="primary_mobile"
           value={primary_mobile}
           id="my-input"
+        />
+      </FormControl>
+      <FormControl>
+        <InputLabel htmlFor="my-input">cust_photo</InputLabel>
+        <Input
+          onChange={(e) => onValueChange(e)}
+          name="cust_photo"
+          value={cust_photo}
+          id="my-input"
+          type="file"
         />
       </FormControl>
       <FormControl>
