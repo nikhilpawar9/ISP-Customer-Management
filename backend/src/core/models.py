@@ -1,8 +1,8 @@
 from django.db import models
 
 class Customer(models.Model):
-    name = models.CharField(max_length=100)
-    email = models.CharField(max_length=100)
+    name = models.CharField(max_length=100,blank = True)
+    email = models.CharField(max_length=100,blank = True)
     primary_mobile = models.IntegerField( default=0 , blank = True)
     alternate_mobile = models.IntegerField( default=0 ,blank = True)
     address = models.CharField(max_length=400, default="Jejuri")
